@@ -58,6 +58,10 @@ h1:before, h2:before, h3:before, h4:before, h5:before, h6:before {
     content: "#";
 }
 
+h2 {
+    counter-increment: first;
+    counter-reset: second;
+}
 
 h2:before {
     content: counter(first) ".";
