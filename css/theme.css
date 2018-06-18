@@ -14,7 +14,6 @@ html{
     font-family: inconsolata,monospace;
     font-size: 16px;
     font-weight: 100;
-    overflow-x: hidden;
     color: #c9cacc;
 }
 
@@ -48,7 +47,22 @@ h1, h2, h3, h4, h5, h6 {
 
 strong, b, h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
+    color: #FFF;
 }
+
+
+h1:before, h2:before, h3:before, h4:before, h5:before, h6:before {
+    color: #F9A825;
+    margin-left: -20px;
+    margin-right: 10px;
+    content: "#";
+}
+
+
+h2:before {
+    content: counter(first) ".";
+}
+
 
 blockquote {
     font-style: italic;
