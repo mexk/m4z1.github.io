@@ -14,8 +14,6 @@ marked.setOptions({
 });
 
 
-                               
-                             
 var templateHtml = '';
 fs.readFile('template.html', (err, data) => {
   if (err)
@@ -76,7 +74,7 @@ fs.readdir(__dirname + '/posts/', (err, files) => {
           htmlContent = templateHtml.replace('{%content%}', postContent);
           htmlContent = htmlContent.replace('{%title%}', title);
           htmlContent = htmlContent.replace('{%meta%}', metaData);
-          htmlContent = htmlContent.replace(/:(\w+):/g, `<i class="em em-$1"></i>`);
+          htmlContent = postContent.replace(/:(\w+):/g, `<i class="em em-$1"></i>`);
           fs.writeFile(htmlOutput, htmlContent, err => {
             if (err)
               throw err;
