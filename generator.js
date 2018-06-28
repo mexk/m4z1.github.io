@@ -13,7 +13,7 @@ marked.setOptions({
   smartypants: false
 });
 
-let emoji_regex: Regex = Regex::new(r#" :\b([a-z\-]+)\b:"#).unwrap(); 
+var emoji_regex = :\b([a-z\-]+)\b:; 
                                
                              
 var templateHtml = '';
