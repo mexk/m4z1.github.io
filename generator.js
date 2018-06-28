@@ -13,7 +13,7 @@ marked.setOptions({
   smartypants: false
 });
 
-let emoji_regex: Regex = Regex::new(r#" :\b([a-z\-]+)\b:"#).unwrap();
+
                                
                              
 var templateHtml = '';
@@ -76,7 +76,7 @@ fs.readdir(__dirname + '/posts/', (err, files) => {
           htmlContent = templateHtml.replace('{%content%}', postContent);
           htmlContent = htmlContent.replace('{%title%}', title);
           htmlContent = htmlContent.replace('{%meta%}', metaData);
-          postContent = emoji_regex.replaceAll(htmlContent, " <i class='em em-$1'></i>").into_owned());
+          htmlContent = htmlContent.replace(/:(\w+):/g, `<i class="em em-$1"></i>`);
           fs.writeFile(htmlOutput, htmlContent, err => {
             if (err)
               throw err;
