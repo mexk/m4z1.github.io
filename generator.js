@@ -74,7 +74,10 @@ fs.readdir(__dirname + '/posts/', (err, files) => {
           htmlContent = templateHtml.replace('{%content%}', postContent);
           htmlContent = htmlContent.replace('{%title%}', title);
           htmlContent = htmlContent.replace('{%meta%}', metaData);
-          htmlContent = htmlContent.replace(/:(\w+):/g, `<i class='em em-$'></i>`);
+        function parseEmoji(s) {
+        return s.replace(/\ \:\b([a-z\-]+)\b\:/g, " <i class='em em-$1'></i>");
+          }
+          parseEmoji(htmlContent);
           fs.writeFile(htmlOutput, htmlContent, err => {
             if (err)
               throw err;
